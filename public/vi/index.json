@@ -1,0 +1,64 @@
+[
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createec2/",
+	"title": "Chuẩn bị Keypair",
+	"tags": [],
+	"description": "",
+	"content": "Trong bước này, chúng ta sẽ cần tạo một Keypair thông thường bạn sẽ tạo keypair bằng console aws. Ở đây mình sẽ hướng dẫn bạn tạo bằng cli.\nBạn mở vscode và tạo folder và file main.tf như sau:\nSau đó bạn mở terminal lên và gõ như sau : ssh-keygen -t rsa -b 4096 -C \u0026ldquo;EmailCuaBan@gmail.com\u0026rdquo;.\nGõ lệnh đó xong bạn sẽ dc báo như sau: Bạn chỉ cần quan tâm tới thư mục bạn muốn lưu file keypair là được. Những dòng khác bạn bỏ trống.\nNếu bạn đã có 2 file này thì chúc mừng bạn đã thành công tạo keypair. Nội dung Tạo VPC Tạo Public subnet Tạo Private subnet Tạo security group Tạo máy chủ Linux public Tạo máy chủ Windows private "
+},
+{
+	"uri": "//localhost:1313/vi/1-introduce/",
+	"title": "Giới thiệu",
+	"tags": [],
+	"description": "",
+	"content": "Terraform Terraform là một công cụ mã nguồn mở hoàn toàn miễn phí được phát hành vào tháng 7 năm 2014 bởi HashiCorp. Công cụ này giúp người dùng định nghĩa và lưu trữ thông tin tài nguyên bên trong hạ tầng hệ thống của mình thông qua các file code. Từ những file code này người dùng có thể sử dụng để triển khai hạ tầng của mình trên cloud như AWS, GCP, Azure, Digital Ocean, GitHub, Cloudflare,… hay cả VMware vSphere,….\nVới việc sử dụng Terraform, bạn sẽ có được những ưu điểm sau:\nĐơn giản hóa việc khởi tạo và quản lý tài nguyên. Đồng nhất quá trình triển khai và quản lý hạ tầng. Với những ưu điểm trên, bạn có thể sử dụng Terraform thay vì sử dụng console tạo và quản lý 1 cách thủ công, chúng ta tiết kiệm được thời gian và chi phí khi quản lý nhiều các tài nguyên.\n"
+},
+{
+	"uri": "//localhost:1313/vi/",
+	"title": "Session Management",
+	"tags": [],
+	"description": "",
+	"content": "Triển Khai Terraform với Amazon Web Service Tổng quan Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Terraform. Quản lý các tài nguyên của AWS thông qua Terraform, ở bài này bạn sẽ dùng Terraform tạo và clean up resouce bằng code thay vì dùng cách thủ công.\n"
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createec2/2.1.1-createkeypair/",
+	"title": "Tạo VPC ",
+	"tags": [],
+	"description": "",
+	"content": "Tạo keypair bằng terraform Lab VPC Truy cập giao diện quản trị dịch vụ VPC Click Your VPC. Click Create VPC. "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/",
+	"title": "Các bước set up",
+	"tags": [],
+	"description": "",
+	"content": "\rBạn cần cài đặt aws-cli và terraform trước để thực hành bài lab này\nBạn có thể làm theo hướng dẫn dưới đây để cài đặt phù hợp với hệ điều hành của mình:\nAWS-CLI Terraform Để sử dụng System Manager để quản lý window instance nói riêng và các instance nói chung của chúng ta trên AWS, ta cần phải cung cấp quyền cho các instance của chúng ta có thể làm việc với System Manager.Trong phần chuẩn bị này, chúng ta cũng sẽ tiến hành tạo IAM Role để cấp quyền cho các instance có thể làm việc với System Manager.\nNội dung Chuẩn bị VPC và EC2 Instance Tạo IAM Role "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createec2/2.1.2-createtemplate/",
+	"title": "Tạo Resource AWS EC2",
+	"tags": [],
+	"description": "",
+	"content": "Tạo Private subnet Mở file main.tf và code theo như sau: *Các bạn không cần phải hiểu hết cú pháp mình sẽ giải phẩu tất tần tật về terraform ở bài lab sau.\n*Lưu ý: Bạn nhớ dẫn đúng đường dẫn public key mà bạn đã tạo từ trước nhé Gõ các câu lệnh để bắt đầu tạo EC2. Tại terminal bạn gõ lệnh theo các thứ tự sau: Terraform init Terraform plan Terraform apply Mình sẽ được thông báo ec2 đang khởi tạo: Kiểm tra thành quả. Bây giờ chúng ta sẽ mở console chọn service EC2 lên để kiểm tra xem nó đã được khởi tạo chưa Tới đây bạn đã tạo thành công EC2 bằng terraform cơ bản "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createec2/2.1.4-cleanupresource/",
+	"title": "Clean up resource",
+	"tags": [],
+	"description": "",
+	"content": "Cuối cùng chúng ta sẽ xóa resource để tránh bị mất tiền oan. Thông thường bạn sẽ phải dùng cách thủ công để xóa các resouce sau khi thực hành các bài lab để tránh aws tính phí ở console như khởi tạo các service khác ( ở bài lab này chúng ta tạo EC2). Và dĩ nhiên ta vẫn sẽ dùng code để clean up resouce mà ko cần phải vô console aws.\nBạn mở terminal và gõ: terraform destroy Terraform sẽ xóa tất cả các resource mà bạn đã tạo trước đó\nBạn kéo xuống cuối dòng và gõ YES để xác nhận xóa. Cuối cùng vô EC2 kiểm tra xem resouce đã thật sự xóa chưa. Như bạn thấy đấy nó đã bị terminated\nVậy là mình đã hướng dẫn bạn sử dụng terraform 1 cách cơ bản nhất, có thể bạn sẽ còn rất nhiều thắc mắc, mình giải phẩu terraform ở bài sau để bạn có thể hiểu sâu hơn về nó\n"
+},
+{
+	"uri": "//localhost:1313/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:1313/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

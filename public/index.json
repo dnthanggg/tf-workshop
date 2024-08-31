@@ -1,0 +1,64 @@
+[
+{
+	"uri": "//localhost:1313/1-introduce/",
+	"title": "Giới thiệu",
+	"tags": [],
+	"description": "",
+	"content": "Terraform Terraform là một công cụ mã nguồn mở hoàn toàn miễn phí được phát hành vào tháng 7 năm 2014 bởi HashiCorp. Công cụ này giúp người dùng định nghĩa và lưu trữ thông tin tài nguyên bên trong hạ tầng hệ thống của mình thông qua các file code. Từ những file code này người dùng có thể sử dụng để triển khai hạ tầng của mình trên cloud như AWS, GCP, Azure, Digital Ocean, GitHub, Cloudflare,… hay cả VMware vSphere,….\nVới việc sử dụng Terraform, bạn sẽ có được những ưu điểm sau:\nĐơn giản hóa việc khởi tạo và quản lý tài nguyên. Đồng nhất quá trình triển khai và quản lý hạ tầng. Với những ưu điểm trên, bạn có thể sử dụng Terraform thay vì sử dụng console tạo và quản lý 1 cách thủ công, chúng ta tiết kiệm được thời gian và chi phí khi quản lý nhiều các tài nguyên.\n"
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/",
+	"title": "Preparing VPC and EC2",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we will need to create a VPC with 2 public / private subnets. Then create 1 EC2 Instance Linux located in the public subnet, 1 EC2 Instance Windows located in the private subnet.\nThe architecture overview after you complete this step will be as follows:\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC Content Create VPC Create Public Subnet Create Private Subnet Create security group Create public Linux server Create private Windows server "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.1-createkeypair/",
+	"title": "Tạo VPC ",
+	"tags": [],
+	"description": "",
+	"content": "Tạo keypair bằng terraform Lab VPC Truy cập giao diện quản trị dịch vụ VPC Click Your VPC. Click Create VPC. "
+},
+{
+	"uri": "//localhost:1313/",
+	"title": "Terraform Management",
+	"tags": [],
+	"description": "",
+	"content": "Work with Amazon System Manager - Session Manager Overall In this lab, you\u0026rsquo;ll learn the basics and practice of Amazon System Manager - Session Manager . Perform creating public and private instance connections.\nContent Introduction Preparation Connect to EC2 instance Manage session logs Port Forwarding Clean up resources "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/",
+	"title": "Preparation ",
+	"tags": [],
+	"description": "",
+	"content": "\rYou need to create 1 Linux instance on the public subnet and 1 Window instance on the private subnet to perform this lab.\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC In order to use System Manager to manage our window instances in particular and our instances in general on AWS, we need to give permission to our instances to be able to work with System Manager. In this preparation, we will also proceed to create an IAM Role to grant permissions to instances that can work with System Manager.\nContent Prepare VPC and EC2 Create IAM Role "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.2-createtemplate/",
+	"title": "Create Private Subnet",
+	"tags": [],
+	"description": "",
+	"content": "Create Private Subnet Click Subnets. Click Create subnet. At the Create subnet page. In the VPC ID section, click Lab VPC. In the Subnet name field, enter Lab Private Subnet. In the Availability Zone section, select the first Availability zone. In the field IPv4 CIRD block enter 10.10.2.0/24. Scroll to the bottom of the page, click Create subnet. The next step is to create the necessary security groups for the lab.\n"
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.4-cleanupresource/",
+	"title": "Create security groups",
+	"tags": [],
+	"description": "",
+	"content": "Create security groups In this step, we will proceed to create the security groups used for our instances. As you can see, these security groups will not need to open traditional ports to ssh like port 22 or remote desktop through port 3389.\nCreate security group for Linux instance located in public subnet Go to VPC service management console Click Security Group. Click Create security group. In the Security group name field, enter SG Public Linux Instance. In the Description section, enter SG Public Linux Instance. In the VPC section, click the X to reselect the Lab VPC you created for this lab. Keep Outbound rule, drag the mouse to the bottom. Click Create security group. As you can see, the security group we created to use for Linux public instances will not need to open traditional ports to ssh like port 22.\nCreate a security group for a Windows instance located in a private subnet After successfully creating a security group for the Linux instance located in the public subnet, click the Security Groups link to return to the Security groups list. Click Create security group.\nIn the Security group name field, enter SG Private Windows Instance.\nIn the Description section, enter SG Private Windows Instance. In the VPC section, click the X to reselect the Lab VPC you created for this lab. Scroll down. Add Outbound rule to allow TCP 443 connection to 10.10.0.0/16 ( CIDR of Lab VPC we created) Click Create security group. For the Instance in the private subnet, we will connect to the Session Manager endpoint over a TLS encrypted connection, so we need to allow outbound connection from our instance to VPC CIDR through port 443.\nCreate security group for VPC Endpoint In this step, we will create security group for VPC Endpoint of Session Manager. After successfully creating the security group for the Windows instance in the private subnet, click the Security Groups link to return to the Security groups list. Click Create security group. In the Security group name field, enter SG VPC Endpoint. In the Description section, enter SG VPC Endpoint. In the VPC section, click the X to reselect the Lab VPC you created for this lab. Scroll down. Delete Outbound rule. Add Inbound rule allowing TCP 443 to come from 10.10.0.0/16 ( CIDR of Lab VPC we created ). Click Create security group. So we are done creating the necessary security groups for EC2 instances and VPC Endpoints.\n"
+},
+{
+	"uri": "//localhost:1313/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:1313/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
